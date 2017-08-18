@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #product{
+            position: relative;
+            width: 350px;
+            height: 350px;
+            border: 1px solid #aaa;
+            margin:100px;
+        }
+        #product .small{
+            position: relative;
+            width: 350px;
+            height: 350px;
+            cursor: move;
+            overflow: hidden;
+        }
+        #product .touch-eye{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 160px;
+            height: 160px;
+            background-color:rgba(255,255,0,.4);
+        }
+        #product .detail{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 360px;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #aaa;
+            overflow: hidden;
+        }
+        #product .detail-img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="product">
+        <div class="small">
+            <img src="img/mouse350X350.jpg" class="small-img">
+            <div class="touch-eye"></div>
+        </div>
+        <div class="detail">
+            <img src="img/mouse800X800.jpg" class="detail-img">
+        </div>
+    </div>
+    <script>
+        var smallBox = document.querySelector("#product .small");
+        var product = document.querySelector("#product");
+        var detailImg = document.querySelector("#product .detail-img");
+        var touchEye = document.querySelector("#product .touch-eye");
+        smallBox.addEventListener("mousemove",function(ev){
+            document.querySelector("#product .detail").style.display = "block";
+            var ev = ev || window.event;
+            var sX = ev.clientX - product.offsetLeft;
+            var sY = ev.clientY - product.offsetTop;
+            touchEye.style.left = sX.toFixed(0)-80+"px";
+            touchEye.style.top = sY.toFixed(0)-80+"px";
+            var xPer = sX/350;
+            var yPer = sY/350;
+            detailImg.style.left = (175-sX)*(800/350)-150+"px";
+            detailImg.style.top = (175-sY)*(800/350)-150+"px";
+            console.log(xPer,yPer);
+        });
+    
+    </script>
+</body>
+</html>

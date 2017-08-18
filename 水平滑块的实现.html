@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #bar {
+            position: relative;
+            height: 12px;
+            width: 600px;
+            background-color: #c7d1df;
+            margin: 100px auto;
+        }
+
+        #scroll {
+            position: absolute;
+            left: 0;
+            top: -14px;
+            width: 20px;
+            height: 40px;
+            background-color: #3a9aff;
+            cursor: pointer;
+        }
+        .shuoming{
+            color: #666;
+            width: 600px;
+            margin: 100px auto;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="bar">
+        <div id="scroll"></div>
+    </div>
+    <div class="shuoming">
+        <h4> 滑动距离：<span class="juli"></span></h4>
+        <h4> 滑动百分比：<span class="juliPer"></span></h4>
+    </div>
+    <script>
+        var bar = document.querySelector("#bar");
+        var scroll = document.querySelector("#scroll");
+        var juli = document.querySelector(".shuoming .juli");
+        var baifenbi = document.querySelector(".shuoming .juliPer");
+        scroll.addEventListener("mousedown", function () {
+            document.onmousemove = function (ev) {
+                window.getSelection ? window.getSelection().removeAllRanges():document.selection.empty();
+                var ev = ev || window.event;
+                var x = ev.clientX - bar.offsetLeft;
+                var max = bar.offsetWidth - scroll.offsetWidth;
+                var min = 0;
+                if (x >= max) {
+                    x = max;
+                } else if (x <= 0) {
+                    x = 0;
+                }
+                scroll.style.left = x + "px";
+                juli.innerHTML = x+"px";
+                baifenbi.innerHTML = (x*100/(bar.offsetWidth-scroll.offsetWidth)).toFixed(0)+"%";
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+            }
+        });
+    </script>
+</body>
+
+</html>

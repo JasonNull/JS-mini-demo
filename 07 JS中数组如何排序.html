@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var arr = [100, 5, 300, 500, 10, 2];
+        var arr2 = [100, 5, 300, 500, 10, 2];
+        arr.sort(rise);
+        function rise(i,j){
+            return i-j;
+        }
+        alert(arr);
+        function down(i,j){
+            return j-i;
+        }
+        arr2.sort(down);
+        alert(arr2);
+    </script>
+
+</body>
+
+</html>

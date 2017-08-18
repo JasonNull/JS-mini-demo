@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        setInterval(function(){
+            var date = new Date();
+            Year = date.getFullYear();
+            Month = date.getMonth();
+            Day = date.getDate();
+            Hour = date.getHours();
+            Minute = date.getMinutes();
+            Second = date.getSeconds();
+            str = Year+"-"+Month+"-"+Day+"-"+Hour+"-"+Minute+"-"+Second;
+            document.title = str;
+        },1000);
+    </script>
+</body>
+
+</html>

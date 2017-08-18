@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .modal-box {
+            position: absolute;
+            left: 40%;
+            top: 50%;
+            width: 500px;
+            height: 400px;
+            background-color: #fff;
+            border: 8px solid #ccc;
+            box-shadow: 1px 4px 30px #588de5;
+        }
+
+        .modal-title {
+            width: 100%;
+            height: 40px;
+            text-indent: 2em;
+            color: #fff;
+            font-size: 20px;
+            line-height: 40px;
+            background-color: #588de5;
+        }
+
+        .modal-title .close {
+            font-size: 36px;
+            line-height: 40px;
+            float: right;
+            margin-right: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-box">
+        <div class="modal-title">
+            注册信息&nbsp;&nbsp;&nbsp;(可以拖拽) <span class="close">&times;</span>
+        </div>
+    </div>
+    <script>
+        var mBox = document.querySelector(".modal-box");
+        var mTitle = document.querySelector(".modal-title");
+        // mBox.onmousedown = function(){
+        //     document.onmousemove = function(){
+        //         window.getSelection ? window.getSelection().removeAllRanges():document.selection.empty();
+        //     }
+
+        // }
+        mTitle.onmousedown = function (ev) {
+            var ev = ev || window.event;
+            var innerX = ev.clientX - mBox.offsetLeft;
+            var innerY = ev.clientY - mBox.offsetTop;
+            var windowWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+            var windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            document.onmousemove = function (ev) {
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                var ev = ev || window.event;
+                var x = ev.clientX - innerX;
+                var y = ev.clientY - innerY;
+                if (x <= 0) {
+                    x = 0
+                } else if (x >= windowWidth - mBox.offsetWidth) {
+                    x = windowWidth - mBox.offsetWidth;
+                };
+                if (y <= 0) {
+                    y = 0;
+                } else if (y >= windowHeight-mBox.offsetHeight) {
+                    y = windowHeight-mBox.offsetHeight;
+                };
+                mBox.style.left = x + "px";
+                mBox.style.top = y + "px";
+            };
+            document.onmouseup = function () {
+                document.onmousemove = null;
+            }
+        }
+    </script>
+</body>
+
+</html>

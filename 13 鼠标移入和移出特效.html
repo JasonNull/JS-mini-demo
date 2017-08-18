@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #shige {
+            list-style: none;
+        }
+
+        #shige li {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="shige">
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+        <li>但使龙城飞将在，不教胡马渡阴山</li>
+    </ul>
+    <script>
+        var shige = document.getElementById('shige');
+        var oLis = shige.getElementsByTagName('li');
+        for (var i = 0; i < oLis.length; i++) {
+            oLis[i].index = i;
+            oLis[i].onmouseenter = function () {
+                this.style.backgroundColor = "#eee";
+                this.innerHTML += this.index;
+            }
+            oLis[i].onmouseleave = function () {
+                var length = this.innerHTML.length;
+                this.style.backgroundColor = "#fff";
+                this.innerHTML = this.innerHTML.substring(0,length-1);
+            }
+        }
+    </script>
+</body>
+
+</html>

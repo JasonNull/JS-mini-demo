@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            padding: 40px;
+        }
+        #grandfather{
+            position: relative;
+            width: 800px;
+            height: 800px;
+            padding: 50px;
+            background-color: peachpuff;
+            border:10px solid red;
+        }
+
+        #father {
+            width: 400px;
+            height: 400px;
+            padding: 30px;
+            background-color: yellowgreen;
+            border: 10px solid palevioletred;
+        }
+
+        #son{
+            position: realtive;
+            left: 20px;
+            top: 20px;
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            background-color: blue;
+            border: 10px solid black;
+        }
+
+</style>
+</head>
+<body>
+    <div id="grandfather">
+        <div id="father">
+            <div id="son" ></div>
+        </div>
+    </div>
+    <script>
+        var son= document.getElementById("son");
+        console.log(son.offsetLeft);
+</script>
+</body>
+</html>

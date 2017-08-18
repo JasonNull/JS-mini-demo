@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>筋斗云效果</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background: #333;
+        }
+
+        #nav {
+            position: relative;
+            width: 830px;
+            height: 50px;
+            margin: 100px auto;
+            border-radius: 4px;
+            background: #eee url("img/rss.png") no-repeat right center;
+        }
+
+        #nav .cloud {
+            position: absolute;
+            left: 6px;
+            top: 6px;
+        }
+
+        #nav ul {
+            position: absolute;
+            left: 0;
+            top: 0;
+            list-style: none;
+            cursor: pointer;
+        }
+
+        #nav ul>li {
+            float: left;
+            padding: 14px 17px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <img src="img/cloud.gif" class="cloud" id="cloud"></img>
+        <ul>
+            <li>首页新闻</li>
+            <li>师资力量</li>
+            <li>活动策划</li>
+            <li>企业文化</li>
+            <li>招聘信息</li>
+            <li>公司简介</li>
+            <li>上海校区</li>
+            <li>广州校区</li>
+        </ul>
+    </div>
+    <script>
+        var lis = document.getElementsByTagName("li");
+        var cloud = document.getElementById("cloud");
+        var leader = 0,
+            target = 0;
+        var current = 0;
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                target = this.offsetLeft;
+            }
+            lis[i].onmouseout = function () {
+                target = current;
+            }
+            lis[i].onclick = function () {
+                current = this.offsetLeft;
+            }
+        };
+          setInterval(function () {
+            leader = leader + (target - leader) / 10;
+            cloud.style.left = leader + "px";
+        }, 10);
+    </script>
+
+    <!-- <script>
+        var cloud = document.getElementById("cloud"); // 云彩
+        var nav = document.getElementById("nav");
+        var lis = nav.children[1].children;
+        var current = 0; // 用于存放点击时候的 offsetLeft
+        //alert(lis.length);
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onmouseover = function () {
+                // alert(this.offsetLeft);
+                target = this.offsetLeft; // 把左侧的位置 ，给 target
+            }
+            lis[i].onmouseout = function () {
+                target = current; // 鼠标离开  target 是 刚才我们点击的位置
+            }
+            lis[i].onclick = function () {
+                current = this.offsetLeft; //  点击的时候 吧当前位置 存贮一下
+            }
+        }
+        // 缓动公式
+        var leader = 0,
+            target = 0;
+        setInterval(function () {
+            leader = leader + (target - leader) / 10;
+            cloud.style.left = leader + "px";
+        }, 10);
+    </script>  -->
+
+</body>
+
+</html>

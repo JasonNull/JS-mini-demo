@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #ran {
+            cursor: pointer;
+        }
+        .father{
+            width: 100px;
+            height: 100px;
+            padding: 100px;
+            background:pink;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background:lightseagreen;
+        }
+    </style>
+</head>
+
+<body>
+    0<input type="range" id="ran">100
+    <div id="result"></div>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        var ran = document.getElementById("ran");
+        ran.oninput = function () {
+            var res = document.getElementById("result");
+            res.innerHTML = ran.value;
+        }
+        var father = document.querySelector(".father");
+        var son = document.querySelector(".son");
+        father.addEventListener("click", function () {
+            console.log("father");
+        },false)
+        son.addEventListener("click", function () {
+            console.log("son ");
+        },true)
+    </script>
+</body>
+
+</html>

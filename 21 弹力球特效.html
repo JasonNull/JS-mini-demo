@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>弹力球特效</title>
+    <style>
+        #ball {
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+        }
+        /* body{
+            background-color:lightcoral;
+        }
+        html{
+            background-color:aqua;
+        }
+        *{
+            margin:0;
+            padding:0;
+        } */
+    </style>
+</head>
+
+<body>
+    <img src="666.gif" alt="" id="ball">
+
+    <script>
+        var oBall = document.getElementById("ball");
+        var sx = 0;
+        var sy = 0;
+        var vx = 10;
+        var vy = 10;
+        var winW = document.documentElement.clientWidth;
+        var winH = document.documentElement.clientHeight;
+        var ballW = 100;
+        var ballH = 100;
+
+        var ballTimer = setInterval(function () {
+            if (sx > winW - ballW) {
+                vx = -10;
+            } else if (sx < 0) {
+                vx = 10;
+            }
+            if (sy > winH - ballH) {
+                vy = -10;
+            } else if (sy < 0) {
+                vy = 10;
+            }
+            sx += vx;
+            sy += vy;
+            oBall.style.left = sx + "px";
+            oBall.style.top = sy + "px";
+        }, 100);
+
+        oBall.onmouseenter = function () {
+            clearInterval(ballTimer);
+            console.log("进来了");
+        }
+        oBall.onmouseleave = function () {
+            ballTimer = setInterval(function () {
+                if (sx > winW - ballW) {
+                    vx = -10;
+                } else if (sx < 0) {
+                    vx = 10;
+                }
+                if (sy > winH - ballH) {
+                    vy = -10;
+                } else if (sy < 0) {
+                    vy = 10;
+                }
+                sx += vx;
+                sy += vy;
+                oBall.style.left = sx + "px";
+                oBall.style.top = sy + "px";
+            }, 100);
+        }
+        oBall.onclick = function () {
+            this.style.display = "none";
+           // window.open("http://www.baidu.com","_blank");
+           window.location = "http://www.baidu.com";
+        }
+    </script>
+</body>
+
+</html>

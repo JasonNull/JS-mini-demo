@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #flying {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="flying.gif" alt="蝴蝶飞啊飞" id="flying">
+    <script>
+        var flying = document.getElementById("flying");
+        var leaderX = 0,
+            leaderY = 0,
+            targetX = 0,
+            targetY = 0;
+        document.onmousedown = function (ev) {
+            var ev = ev || window.event;
+            targetX = ev.clientX;
+            targetY = ev.clientY;
+        }
+        setInterval(function () {
+            leaderX += (targetX - leaderX) / 20;
+            leaderY += (targetY - leaderY) / 20;
+            flying.style.top = leaderY + "px";
+            flying.style.left = leaderX + "px";
+        }, 30);
+    </script>
+</body>
+
+</html>

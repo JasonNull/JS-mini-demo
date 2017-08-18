@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="clock"></h1>
+    <input type="button" value="按钮" id="btn1">
+    <script>
+        var oClock = document.getElementById("clock");
+        var i = 0;
+        var oBtn = document.getElementById('btn1');
+        var timer = setInterval(function () {
+            oClock.innerHTML = i++;
+        }, 100);
+        var lock = true;
+        oBtn.onclick = function () {
+            if (lock) {
+                clearInterval(timer);
+                lock = false;
+
+            } else {
+                timer = setInterval(function () {
+                    oClock.innerHTML = i++;
+                }, 100);
+                lock = true;
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>

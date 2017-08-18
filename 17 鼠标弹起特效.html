@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>验证码:</p>
+    <p>
+        <input type="text" placeholder="请输入您的验证码" id="yzm">
+    </p>
+    <script>
+            var oYzm = document.getElementById("yzm");
+            oYzm.onfocus = function(){
+                this.placeholder = '';
+            }
+            oYzm.onblur = function(){
+              //  alert('1024');
+            }
+    </script>
+</body>
+
+</html>
